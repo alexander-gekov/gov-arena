@@ -479,7 +479,17 @@ const handleReset = () => {
       </div>
 
       <div class="space-y-2 pt-2 border-t border-border/30">
-        <label class="text-xs text-muted-foreground font-mono">API Key</label>
+        <div class="flex items-center justify-between">
+          <label class="text-xs text-muted-foreground font-mono">API Key</label>
+          <a
+            href="https://vercel.com/ai-gateway"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs text-primary hover:underline font-mono"
+          >
+            Get API Key
+          </a>
+        </div>
         <input
           v-model="apiKeyInput"
           type="password"

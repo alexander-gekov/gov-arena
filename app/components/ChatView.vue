@@ -240,9 +240,50 @@ watch(() => messages.value.length, async () => {
         </div>
       </div>
 
-      <div v-if="messages.length === 0" class="text-center text-muted-foreground/50 italic py-8">
-        No messages yet. Start the game to see the debate unfold.
+      <div v-if="messages.length === 0" class="flex flex-col items-center justify-center py-12 px-4 space-y-6">
+        <div class="text-center space-y-4 max-w-md">
+          <h3 class="text-sm font-mono font-semibold text-foreground">Getting Started</h3>
+          <div class="space-y-4 text-left">
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-xs font-mono font-semibold text-primary">
+                1
+              </div>
+              <div class="flex-1 space-y-1">
+                <div class="text-xs font-mono font-semibold text-foreground">Choose LLMs as Delegates</div>
+                <div class="text-xs text-muted-foreground">Select models from the left sidebar for each delegate seat</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-xs font-mono font-semibold text-primary">
+                2
+              </div>
+              <div class="flex-1 space-y-1">
+                <div class="text-xs font-mono font-semibold text-foreground">Select a Topic</div>
+                <div class="text-xs text-muted-foreground">Enter a policy scenario or use the Random button</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-xs font-mono font-semibold text-primary">
+                3
+              </div>
+              <div class="flex-1 space-y-1">
+                <div class="text-xs font-mono font-semibold text-foreground">Enter API Key</div>
+                <div class="text-xs text-muted-foreground">Add your Vercel AI Gateway API key (optional if server key is configured)</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-xs font-mono font-semibold text-primary">
+                4
+              </div>
+              <div class="flex-1 space-y-1">
+                <div class="text-xs font-mono font-semibold text-foreground">Start Simulation</div>
+                <div class="text-xs text-muted-foreground">Click "Start Game" to begin the debate</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </Card>
 </template>
+

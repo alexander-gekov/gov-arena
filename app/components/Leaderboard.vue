@@ -84,3 +84,4 @@ const formatScore = (score: number) => {
     </div>
   </Card>
 </template>
+
