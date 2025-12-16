@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { SlidersHorizontal, Users } from 'lucide-vue-next'
 
 const gameStore = useGameStore()
 
@@ -9,15 +10,59 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-screen bg-background text-foreground flex flex-col overflow-hidden">
-    <div class="flex items-center justify-between px-6 py-4 border-b border-border/50 shrink-0">
-      <div class="flex items-center gap-4">
-        <h1 class="text-xl font-mono font-bold tracking-tight">GovArena</h1>
-        <div class="text-xs text-muted-foreground font-mono">
+  <div class="min-h-dvh bg-background text-foreground flex flex-col overflow-hidden">
+    <div class="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-border/50 shrink-0 gap-3">
+      <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+        <h1 class="text-lg sm:text-xl font-mono font-bold tracking-tight shrink-0">GovArena</h1>
+        <div class="hidden sm:block text-xs text-muted-foreground font-mono truncate">
           Policy Debate Simulation
         </div>
       </div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <Sheet>
+          <SheetTrigger as-child>
+            <Button variant="outline" size="sm" class="lg:hidden h-8 px-2 text-xs font-mono">
+              <Users class="h-4 w-4 mr-2" />
+              Delegates
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" class="w-[92vw] max-w-sm p-0">
+            <div class="flex flex-col h-full">
+              <div class="p-4 border-b border-border/30 shrink-0">
+                <div class="text-sm font-mono font-semibold text-foreground">Delegates</div>
+              </div>
+              <div class="flex-1 overflow-y-auto p-4 space-y-3">
+                <SeatCard
+                  v-for="seat in gameStore.seats"
+                  :key="seat.id"
+                  :seat="seat"
+                />
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
+
+        <Sheet>
+          <SheetTrigger as-child>
+            <Button variant="outline" size="sm" class="lg:hidden h-8 px-2 text-xs font-mono">
+              <SlidersHorizontal class="h-4 w-4 mr-2" />
+              Controls
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" class="w-[92vw] max-w-sm p-0">
+            <div class="flex flex-col h-full">
+              <div class="p-4 border-b border-border/30 shrink-0">
+                <div class="text-sm font-mono font-semibold text-foreground">Controls</div>
+              </div>
+              <div class="flex-1 overflow-y-auto p-4 space-y-4">
+                <SettingsPanel />
+                <StatusPanel />
+                <Leaderboard />
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
+
         <a
           href="/info"
           class="text-xs text-muted-foreground hover:text-foreground font-mono transition-colors"
@@ -39,7 +84,7 @@ onMounted(() => {
     </div>
 
     <div class="flex-1 flex overflow-hidden">
-      <aside class="w-80 border-r border-border/50 bg-background/50 flex flex-col overflow-hidden shrink-0">
+      <aside class="hidden lg:flex w-80 border-r border-border/50 bg-background/50 flex-col overflow-hidden shrink-0">
         <div class="p-4 border-b border-border/30 shrink-0">
           <h2 class="text-sm font-mono font-semibold text-foreground">Delegates</h2>
         </div>
@@ -56,7 +101,7 @@ onMounted(() => {
         <ChatView />
       </main>
 
-      <aside class="w-80 border-l border-border/50 bg-background/50 flex flex-col overflow-hidden shrink-0">
+      <aside class="hidden lg:flex w-80 border-l border-border/50 bg-background/50 flex-col overflow-hidden shrink-0">
         <div class="flex-1 overflow-y-auto p-4 space-y-4">
           <SettingsPanel />
           <StatusPanel />
